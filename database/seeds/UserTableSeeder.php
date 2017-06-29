@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use DeliveryQuick\User;
+use DeliveryQuick\Models\Client;
 
 class UserTableSeeder extends Seeder {
 
@@ -25,7 +27,7 @@ class UserTableSeeder extends Seeder {
             'remember_token' => str_random(10),
         ]);
 
-        factory(User::class, 10)->create()->each(function($u) {
+        factory(User::class, 5)->create()->each(function($u) {
             $u->client()->save(factory(Client::class)->make());
         });
     }

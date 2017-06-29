@@ -1,6 +1,5 @@
 <?php
-//'middleware' => 'auth.checkrole'
-$this->group(['prefix' => 'admin'], function() {
+$this->group(['prefix' => 'admin', 'middleware' => 'auth.checkrole'], function() {
     /** ROTAS CATEGORIES */
     $this->get('categories/', 'CategoriesController@index')->name('categoriesIndex');
     $this->get('categories/create', 'CategoriesController@create')->name('createCategories');

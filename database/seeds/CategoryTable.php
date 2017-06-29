@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Category;
+use DeliveryQuick\Models\Category;
+use DeliveryQuick\Models\Products;
+
 class CategoryTable extends Seeder
 {
     /**
@@ -11,10 +13,6 @@ class CategoryTable extends Seeder
      */
     public function run()
     {
-        factory(Category::class, 10)->create()->each(function($c){
-            for($i=0; $i <= 1; $i++){
-                $c->products()->save(factory(Products::class)->make());
-            }
-        });
+        factory(Category::class, 10)->create();
     }
 }

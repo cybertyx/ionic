@@ -42,8 +42,14 @@
                     <ul class="nav navbar-nav navbar-left">
                         <!-- Authentication Links -->
                             <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="{{ route('categoriesIndex') }}">Categorias</a></li>
-                            <li><a href="{{ route('productsIndex') }}">Produtos</a></li>
+                            @if (Auth::guest())
+                            @else
+                                @if(Auth::user()->role != "admin")
+                                @else
+                                    <li><a href="{{ route('categoriesIndex') }}">Categorias</a></li>
+                                    <li><a href="{{ route('productsIndex') }}">Produtos</a></li>
+                                @endif
+                            @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

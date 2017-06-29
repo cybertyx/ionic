@@ -10,40 +10,45 @@
 | database. Just tell the factory how a default model should look.
 |
 */
+use DeliveryQuick\User;
+use DeliveryQuick\Models\Category;
+use DeliveryQuick\Models\Client;
+use DeliveryQuick\Models\Products;
+
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(\DeliveryQuick\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'name'              => $faker->name,
+        'email'             => $faker->unique()->safeEmail,
+        'password'          => $password ?: $password = bcrypt('secret'),
+        'remember_token'    => str_random(10),
     ];
 });
 
 
-$factory->define(\DeliveryQuick\Models\Category::class, function(Faker\Generator $faker){
+$factory->define(Category::class, function(Faker\Generator $faker){
     return [
         'name' => $faker->word,
     ];
 });
 
-$factory->define(\DeliveryQuick\Models\Products::class, function(Faker\Generator $faker){
+$factory->define(Products::class, function(Faker\Generator $faker){
     return [
-        'name' => $faker->word,
-        'description' => $faker->sentence,
-        'price' => $faker->numberBetween(10, 50),
+        'name'          => $faker->word,
+        'description'   => $faker->sentence,
+        'price'         => $faker->numberBetween(10, 50),
     ];
 });
 
-$factory->define(\DeliveryQuick\Models\Client::class, function(Faker\Generator $faker){
+$factory->define(Client::class, function(Faker\Generator $faker){
     return [
-        'phone' => $faker->phoneNumber,
-        'address' => $faker->address,
-        'city' => $faker->city,
-        'state' => $faker->state,
-        'zipcode' => $faker->postcode,
+        'phone'     => $faker->phoneNumber,
+        'address'   => $faker->address,
+        'city'      => $faker->city,
+        'state'     => $faker->state,
+        'zipcode'   => $faker->postcode,
     ];
 });
