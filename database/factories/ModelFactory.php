@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(\App\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(\DeliveryQuick\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -24,13 +24,13 @@ $factory->define(\App\Models\User::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(\App\Models\Category::class, function(Faker\Generator $faker){
+$factory->define(\DeliveryQuick\Models\Category::class, function(Faker\Generator $faker){
     return [
         'name' => $faker->word,
     ];
 });
 
-$factory->define(\App\Models\Products::class, function(Faker\Generator $faker){
+$factory->define(\DeliveryQuick\Models\Products::class, function(Faker\Generator $faker){
     return [
         'name' => $faker->word,
         'description' => $faker->sentence,
@@ -38,7 +38,7 @@ $factory->define(\App\Models\Products::class, function(Faker\Generator $faker){
     ];
 });
 
-$factory->define(\App\Models\Client::class, function(Faker\Generator $faker){
+$factory->define(\DeliveryQuick\Models\Client::class, function(Faker\Generator $faker){
     return [
         'phone' => $faker->phoneNumber,
         'address' => $faker->address,

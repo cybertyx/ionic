@@ -38,13 +38,6 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
-                    
-                    <ul class="nav navbar-nav navbar-left">
-                        <!-- Authentication Links -->
-                            <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="{{ route('categoriesIndex') }}">Categorias</a></li>
-                            <li><a href="{{ route('productsIndex') }}">Produtos</a></li>
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
