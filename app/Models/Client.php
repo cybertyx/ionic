@@ -3,6 +3,7 @@
 namespace DeliveryQuick\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DeliveryQuick\User;
 
 class Client extends Model
 {
@@ -16,7 +17,7 @@ class Client extends Model
     ];
     
     public function user() {
-        $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
 }

@@ -48,6 +48,8 @@
                                 @else
                                     <li><a href="{{ route('categoriesIndex') }}">Categorias</a></li>
                                     <li><a href="{{ route('productsIndex') }}">Produtos</a></li>
+                                    <li><a href="{{ route('clientsIndex') }}">Clientes</a></li>
+                                    <li><a href="{{ route('ordersIndex') }}">Pedidos</a></li>
                                 @endif
                             @endif
                     </ul>

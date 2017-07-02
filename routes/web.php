@@ -15,6 +15,22 @@ $this->group(['prefix' => 'admin', 'middleware' => 'auth.checkrole'], function()
     $this->post('product/update/{id}', 'ProductsController@update')->name('updateProducts');
     $this->post('product/store', 'ProductsController@store')->name('storeProducts');
     $this->get('product/destroy/{id}', 'ProductsController@destroy')->name('destroyProducts');
+
+    /** ROTAS CLIENTS */
+    $this->get('client/', 'clientsController@index')->name('clientsIndex');
+    $this->get('client/create', 'clientsController@create')->name('createClients');
+    $this->get('client/edit/{id}', 'clientsController@edit')->name('editclients');
+    $this->post('client/update/{id}', 'clientsController@update')->name('updateclients');
+    $this->post('client/store', 'clientsController@store')->name('storeclients');
+    $this->get('client/destroy/{id}', 'clientsController@destroy')->name('destroyclients');
+    
+    /** ROTAS PEDIDOS (ORDERS) */
+    $this->get('orders/', 'ordersController@index')->name('ordersIndex');
+    $this->get('orders/create', 'ordersController@create')->name('createorders');
+    $this->get('orders/edit/{id}', 'ordersController@edit')->name('editorders');
+    $this->post('orders/update/{id}', 'ordersController@update')->name('updateorders');
+    $this->post('orders/store', 'ordersController@store')->name('storeorders');
+    $this->get('orders/destroy/{id}', 'ordersController@destroy')->name('destroyorders');
 });
 
 Route::get('/', function () {

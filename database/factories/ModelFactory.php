@@ -14,7 +14,8 @@ use DeliveryQuick\User;
 use DeliveryQuick\Models\Category;
 use DeliveryQuick\Models\Client;
 use DeliveryQuick\Models\Products;
-
+use DeliveryQuick\Models\Order;
+use DeliveryQuick\Models\OrderItem;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(User::class, function (Faker\Generator $faker) {
@@ -50,5 +51,19 @@ $factory->define(Client::class, function(Faker\Generator $faker){
         'city'      => $faker->city,
         'state'     => $faker->state,
         'zipcode'   => $faker->postcode,
+    ];
+});
+
+$factory->define(Order::class, function(Faker\Generator $faker){
+    return [
+        'client_id'     => rand(1,5),
+        'total'      => rand(50, 100),
+        'status'     => 0,
+    ];
+});
+
+$factory->define(OrderItem::class, function(Faker\Generator $faker){
+    return [
+        
     ];
 });

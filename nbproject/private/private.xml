@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/ionic/resources/views/admin/categories/edit.blade.php</file>
-            <file>file:/C:/wamp64/www/ionic/app/Http/Controllers/CategoriesController.php</file>
+            <file>file:/C:/wamp64/www/ionic/app/Services/ClientService.php</file>
+            <file>file:/C:/wamp64/www/ionic/resources/views/admin/clients/_form.blade.php</file>
+            <file>file:/C:/wamp64/www/ionic/app/Http/Controllers/ClientsController.php</file>
+            <file>file:/C:/wamp64/www/ionic/resources/views/admin/clients/create.blade.php</file>
+            <file>file:/C:/wamp64/www/ionic/resources/views/layouts/app.blade.php</file>
+            <file>file:/C:/wamp64/www/ionic/routes/web.php</file>
         </group>
     </open-files>
 </project-private>

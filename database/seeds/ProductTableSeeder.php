@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use DeliveryQuick\Models\Products;
+use DeliveryQuick\Models\Category;
 
 class ProductTableSeeder extends Seeder
 {
@@ -12,6 +13,10 @@ class ProductTableSeeder extends Seeder
      */
     public function run()
     {
-       
+        factory(Category::class, 10)->create()->each(function($c){
+            for($i=0; $i<=5; $i++){
+                $c->products()->save(factory(Products::class)->make());
+            }
+        });
     }
 }

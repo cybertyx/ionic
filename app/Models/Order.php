@@ -3,6 +3,9 @@
 namespace DeliveryQuick\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DeliveryQuick\User;
+use DeliveryQuick\Models\OrderItem;
+use DeliveryQuick\Models\Client;
 
 class Order extends Model
 {
@@ -13,15 +16,19 @@ class Order extends Model
         'status',
     ];
     
+    public function client() {
+        return $this->belongsTo(Client::class);
+    }
+    
     public function items() {
-        return $this->hasMany(Order_item::class);
+        return $this->hasMany(OrderItem::class);
     }
     
     public function deliveryman() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_deliveryman_id', 'id');
     }
     
     public function products() {
-        return $this->hasMany(Order_item::class);
+        return $this->hasMany(OrderItem::class);
     }
 }
