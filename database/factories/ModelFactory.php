@@ -16,6 +16,7 @@ use DeliveryQuick\Models\Client;
 use DeliveryQuick\Models\Products;
 use DeliveryQuick\Models\Order;
 use DeliveryQuick\Models\OrderItem;
+use DeliveryQuick\Models\Cupom;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(User::class, function (Faker\Generator $faker) {
@@ -65,5 +66,12 @@ $factory->define(Order::class, function(Faker\Generator $faker){
 $factory->define(OrderItem::class, function(Faker\Generator $faker){
     return [
         
+    ];
+});
+
+$factory->define(Cupom::class, function(Faker\Generator $faker){
+    return [
+        'code' => rand('100', 1000),
+        'value' => rand(50, 100)
     ];
 });

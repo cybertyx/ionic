@@ -49,6 +49,7 @@
                                     <li><a href="{{ route('categoriesIndex') }}">Categorias</a></li>
                                     <li><a href="{{ route('productsIndex') }}">Produtos</a></li>
                                     <li><a href="{{ route('clientsIndex') }}">Clientes</a></li>
+                                    <li><a href="{{ route('cupomsIndex') }}">Cupons</a></li>
                                     <li><a href="{{ route('ordersIndex') }}">Pedidos</a></li>
                                 @endif
                             @endif
@@ -88,8 +89,10 @@
 
         @yield('content')
     </div>
-
+          
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
+    @yield('post-script')
 </body>
 </html>

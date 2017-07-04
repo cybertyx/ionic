@@ -17,8 +17,13 @@ class CreateCupomsTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->decimal('value');
-            $table->smallInteger('used')->default(0);
+            $table->boolean('used')->default(0);
             $table->timestamps();
+        });
+        
+        Schema::table('orders', function(Blueprint $table){
+            $table->integer('cupom_id')->unsigned()->nullable();
+            $table->foreign('cupom_id')->references('id')->on('cupoms');
         });
     }
 

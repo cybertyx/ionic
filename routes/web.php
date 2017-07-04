@@ -31,6 +31,20 @@ $this->group(['prefix' => 'admin', 'middleware' => 'auth.checkrole'], function()
     $this->post('orders/update/{id}', 'ordersController@update')->name('updateorders');
     $this->post('orders/store', 'ordersController@store')->name('storeorders');
     $this->get('orders/destroy/{id}', 'ordersController@destroy')->name('destroyorders');
+    
+    /** ROTAS CUPOMS */
+    $this->get('cupoms/', 'cupomsController@index')->name('cupomsIndex');
+    $this->get('cupoms/create', 'cupomsController@create')->name('createcupoms');
+    $this->get('cupoms/edit/{id}', 'cupomsController@edit')->name('editcupoms');
+    $this->post('cupoms/update/{id}', 'cupomsController@update')->name('updatecupoms');
+    $this->post('cupoms/store', 'cupomsController@store')->name('storecupoms');
+    $this->get('cupoms/destroy/{id}', 'cupomsController@destroy')->name('destroycupoms');
+});
+
+$this->group(['prefix'=>'customer'], function(){
+    $this->get('order','checkoutController@index')->name('index');
+    $this->get('order/create','checkoutController@create')->name('checkoutindex');
+    $this->post('order/store','checkoutController@store')->name('checkoutstore');
 });
 
 Route::get('/', function () {
