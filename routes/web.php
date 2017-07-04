@@ -1,5 +1,5 @@
 <?php
-$this->group(['prefix' => 'admin', 'middleware' => 'auth.checkrole'], function() {
+$this->group(['prefix' => 'admin', 'middleware' => 'auth.checkrole:admin'], function() {
     /** ROTAS CATEGORIES */
     $this->get('categories/', 'CategoriesController@index')->name('categoriesIndex');
     $this->get('categories/create', 'CategoriesController@create')->name('createCategories');
@@ -41,8 +41,8 @@ $this->group(['prefix' => 'admin', 'middleware' => 'auth.checkrole'], function()
     $this->get('cupoms/destroy/{id}', 'cupomsController@destroy')->name('destroycupoms');
 });
 
-$this->group(['prefix'=>'customer'], function(){
-    $this->get('order','checkoutController@index')->name('index');
+$this->group(['prefix'=>'customer', 'middleware' => 'auth.checkrole:client'], function(){
+    $this->get('order','checkoutController@index')->name('ordersindex');
     $this->get('order/create','checkoutController@create')->name('checkoutindex');
     $this->post('order/store','checkoutController@store')->name('checkoutstore');
 });
