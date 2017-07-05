@@ -9,11 +9,14 @@
 
         <table class="table table-bordered">
             <thead>
-                <tr>ID</tr>
-                <tr>Total</tr>
-                <tr>Status</tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
             </thead>
             <tbody>
+
                 @foreach($orders as $order)
                 <tr>
                     <td>{{$order->id}}</td>
@@ -24,8 +27,6 @@
             </tbody>
         </table>
     </div>
-
-    {!! $orders->render() !!}
 
 </div>
 @endsection 
