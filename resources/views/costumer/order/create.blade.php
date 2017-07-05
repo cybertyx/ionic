@@ -4,13 +4,12 @@
     <h3>Novo Pedido</h3>
     @include('errors._checkForm')
 
-    {!! Form::open(['route' => 'checkoutstore', 'class'=>'form-horizontal']) !!}
+    {!! Form::open(['class'=>'form-horizontal']) !!}
     <div class="form-group">
-        <label>Total: R$  <span style="font-size: 30px; color: #f66;" id="total"></span></label><br />
-
-        {!! Form::hidden('total') !!}
-        
+        <label>Total: </label>
+        <p id="total"></p>
         <a href="#" id="btnNewItem" class="btn btn-default">Novo Item</a><br /><br />
+
         <table class="table table-bordered" >
             <thead>
                 <tr>
@@ -36,7 +35,7 @@
         </table>    
     </div>
     {!! Form::submit('Criar Pedido', ['class'=> 'btn btn-primary form-control']) !!}
-
+    
     {!! Form::close() !!}
 
     @section('post-script')
@@ -67,9 +66,6 @@
             calculateTotal();
         });
 
-        
-
-
         function calculateTotal() {
             var total = 0,
                     trLen = $('table tbody tr').length,
@@ -80,8 +76,6 @@
                 qtd = tr.find('input').val();
                 total += price * qtd;
             }
-
-            document.querySelector("[name='total']").value = total;
 
             $('#total').html(total);
         }

@@ -10,9 +10,9 @@ use DeliveryQuick\Models\Cupom;
 
 class OrderService {
 
+    private $products;
     private $cupom;
     private $order;
-    private $products;
 
     public function __construct(Order $order, Cupom $cupom, Products $products) {
         $this->order = $order;
@@ -22,7 +22,7 @@ class OrderService {
 
     public function create(array $dataForm) {
 
-        \Illuminate\Support\Facades\DB::beginTransaction();
+        DB::beginTransaction();
         try {
             $dataForm['status'] = 0;
 
@@ -51,13 +51,14 @@ class OrderService {
             if (isset($cupom)) {
                 $order->total = $total - $cupom->value;
             }
-            
-            $order->save();
 
+            $order->save();
+            
             \Illuminate\Support\Facades\DB::commit();
+            
         } catch (Exception $ex) {
             \Illuminate\Support\Facades\DB::rollback();
-            throw $ex;
+            throw $e;
         }
     }
 
