@@ -41,7 +41,7 @@ $this->group(['prefix' => 'admin', 'middleware' => 'auth.checkrole:admin'], func
     $this->get('cupoms/destroy/{id}', 'cupomsController@destroy')->name('destroycupoms');
 });
 
-$this->group(['prefix'=>'customer', 'middleware' => 'auth.checkrole:client'], function(){
+$this->group(['prefix'=>'customer', 'middleware' => 'auth'], function(){
     $this->get('order','checkoutController@index')->name('ordersindex');
     $this->get('order/create','checkoutController@create')->name('checkoutindex');
     $this->post('order/store','checkoutController@store')->name('checkoutstore');

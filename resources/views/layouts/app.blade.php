@@ -42,17 +42,16 @@
                         <ul class="nav navbar-nav navbar-left">
                             <!-- Authentication Links -->
                             <li><a href="{{ route('home') }}">Home</a></li>
-                            @if (Auth::guest())
-                                @else
-                                    @if(Auth::user()->role == "admin")
-                                        <li><a href="{{ route('categoriesIndex') }}">Categorias</a></li>
-                                        <li><a href="{{ route('productsIndex') }}">Produtos</a></li>
-                                        <li><a href="{{ route('clientsIndex') }}">Clientes</a></li>
-                                        <li><a href="{{ route('cupomsIndex') }}">Cupons</a></li>
-                                        <li><a href="{{ route('ordersIndex') }}">Pedidos</a></li>
-                                    @elseif(Auth::user()->role == "client")
-                                        <li><a href="{{ route('ordersindex') }}">Meus Pedidos</a></li>
-                                    @endif
+                            @if (Auth::user())
+                                @if(Auth::user()->role == "admin")
+                                    <li><a href="{{ route('categoriesIndex') }}">Categorias</a></li>
+                                    <li><a href="{{ route('productsIndex') }}">Produtos</a></li>
+                                    <li><a href="{{ route('clientsIndex') }}">Clientes</a></li>
+                                    <li><a href="{{ route('cupomsIndex') }}">Cupons</a></li>
+                                    <li><a href="{{ route('ordersIndex') }}">Pedidos</a></li>
+                                @elseif(Auth::user()->role == "client")
+                                    <li><a href="{{ route('ordersindex') }}">Meus Pedidos</a></li>
+                                @endif
                             @endif
                         </ul>
 
