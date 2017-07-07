@@ -25,13 +25,10 @@ class CheckoutController extends Controller {
 
     public function index() {
         if (Auth::check()) {
-            $clientId = $this->user->find(Auth::user()->id)->client->id;
-
+            $clientId = $this->user->find(Auth::user()->id);
             $orders = $this->order->where('client_id', $clientId)->get();
             return view('costumer.order.index', compact('orders'));
         }
-        
-        
     }
 
     public function create() {
@@ -44,7 +41,7 @@ class CheckoutController extends Controller {
         $dataForm = $request->all();
         
         if (Auth::check()) {
-            $clientId = $this->user->find(Auth::user()->id)->client->id;
+            $clientId = $this->user->find(Auth::user()->id);
             $dataForm['client_id'] = $clientId;
         }
         
