@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use DeliveryQuick\User;
 use DeliveryQuick\Models\OrderItem;
 use DeliveryQuick\Models\Client;
+use DeliveryQuick\Models\Cupom;
 
 class Order extends Model
 {
@@ -18,6 +19,10 @@ class Order extends Model
     
     public function client() {
         return $this->belongsTo(Client::class);
+    }
+    
+    public function cupom() {
+        return $this->belongsTo(Cupom::class);
     }
     
     public function items() {

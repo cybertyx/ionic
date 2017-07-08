@@ -20,7 +20,7 @@ $this->post('refresh', 'Api\Auth\LoginController@refresh');
 $this->middleware('auth:api')->group(function () {
 
     $this->group(['prefix' => 'client','middleware'=>'oauth.checkrole:client'], function () {
-        Route::resource('order', 'Api\Client\ClientCheckoutController', ['except' => ['create', 'store', 'update', 'destroy']]);
+        Route::resource('order', 'Api\Client\ClientCheckoutController', ['except' => ['create', 'update', 'destroy']]);
     });
 
     $this->group(['prefix' => 'deliveryman','middleware'=>'oauth.checkrole:deliveryman'], function () {

@@ -6,7 +6,7 @@
 
     <div class="form-group">
         <a href="{{route('checkoutindex')}}" class="btn btn-default">Novo Pedido</a><br /><br />
-
+       
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -24,9 +24,13 @@
                     <td>{{$order->status}}</td>
                 </tr>
                 @endforeach
+                
             </tbody>
         </table>
+        
     </div>
 
+    {!!$orders->links()!!}
+    
 </div>
 @endsection 

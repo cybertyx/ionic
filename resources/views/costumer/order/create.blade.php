@@ -7,7 +7,6 @@
     {!! Form::open(['route' => 'checkoutstore', 'class'=>'form-horizontal']) !!}
     <div class="form-group">
         <label>Total: R$  <span style="font-size: 30px; color: #f66;" id="total"></span></label><br />
-
         {!! Form::hidden('total') !!}
         
         <a href="#" id="btnNewItem" class="btn btn-default">Novo Item</a><br /><br />
@@ -63,12 +62,9 @@
             calculateTotal();
         });
 
-        $(document.body).on('blur', 'input', function () {
+        $(document.body).on('click', 'input', function () {
             calculateTotal();
         });
-
-        
-
 
         function calculateTotal() {
             var total = 0,

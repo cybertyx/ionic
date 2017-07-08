@@ -5,18 +5,25 @@ namespace DeliveryQuick\Http\Controllers\Api\Client;
 use Illuminate\Http\Request;
 use \DeliveryQuick\Http\Controllers\Controller;
 use \DeliveryQuick\User;
+use DeliveryQuick\Services\OrderService;
 use DeliveryQuick\Models\Order;
 use Auth;
 
 class ClientCheckoutController extends Controller
 {
+
+    /**
+     * @var OrderService
+     */
+    private $service;
     private $user;
     private $order;
     
-    public function __construct(User $user, Order $order) {
+    public function __construct(User $user, Order $order, OrderService $service) {
         
         $this->user = $user;
         $this->order = $order;
+        $this->service = $service;
     }
     /**
      * Display a listing of the resource.
@@ -26,20 +33,9 @@ class ClientCheckoutController extends Controller
     public function index()
     {
         //verificar bruno como fazer pra pegar o Id do usuario autenticado pelo Passport
-        $clientId = Auth::user()->id;
+        $clientId = $this->user->find(Auth::user()->id)->client->id;
         $orders = $this->order->with('items')->where('client_id', $clientId)->paginate(5);
         return $orders;
-        
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -50,7 +46,13 @@ class ClientCheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dataForm = $request->all();
+        
+        $clientId = $this->user->find(Auth::user()->id)->client->id;
+        $dataForm['client_id'] = $clientId;
+        $o = $this->service->create($dataForm);
+        $o = $this->order->with('items')->find($o->id);    
+        return $o;
     }
 
     /**
@@ -61,7 +63,11 @@ class ClientCheckoutController extends Controller
      */
     public function show($id)
     {
-        return ['minha ordem'];
+        $o = $this->order->with(['client', 'items', 'cupom'])->find($id);
+        $o->items->each(function($item){
+            $item->product;
+        });
+        return $o;
     }
 
     /**
@@ -72,7 +78,7 @@ class ClientCheckoutController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**

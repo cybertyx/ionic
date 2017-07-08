@@ -53,8 +53,9 @@ class OrderService {
             }
             
             $order->save();
-
+            
             \Illuminate\Support\Facades\DB::commit();
+            return $order;
         } catch (Exception $ex) {
             \Illuminate\Support\Facades\DB::rollback();
             throw $ex;
